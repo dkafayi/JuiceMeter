@@ -14,10 +14,6 @@ const db = mysql.createConnection({
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req,res)=>{
-  res.json("hello, this is the backend")
-});
-
 app.get("/juices", (req,res) => {
     const q = "SELECT * FROM juice_table"
     db.query(q, (err, data) => {
@@ -72,42 +68,5 @@ app.put("/juices/:id", (req,res)=>{
 });
 
 app.listen(8800, ()=>{
-  console.log("Connected to backend!")
+  console.log("backend connected")
 });
-
-// app.use(express.json())
-// app.use(cors())
-
-// ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'hurricane11';
-
-// app.get("/", (req,res)=>{
-//   res.json("hello, this is the backend")
-// })
-
-// app.get("/juices", (req,res) => {
-//     const q = "SELECT * FROM juice_table"
-//     db.query(q, (err, data) => {
-//         if (err) return res.json(err)
-//         return res.json(data)
-//     })
-// })
-
-// app.post("/juices", (req,res)=>{
-//   const q = "INSERT INTO juice_table (`first_name`, `last_name`, `offense`, `defense`, `miscellaneous`) VALUES (?)"
-//   const values = [
-//     req.body.first_name,
-//     req.body.last_name,
-//     req.body.offense,
-//     req.body.defense,
-//     req.body.miscellaneous
-//   ];
-
-//   db.query(q, [values], (err, data)=> {
-//     if (err) return res.json(err)
-//     return res.json("juice created")
-//   })
-// })
-
-// app.listen(8800, ()=>{
-//   console.log("Connected to backend!")
-// })
